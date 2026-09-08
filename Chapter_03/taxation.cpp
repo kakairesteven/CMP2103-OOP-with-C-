@@ -26,3 +26,61 @@
 // Enter the residence status: 0
 // Enter the taxable income: 4,000,000
 // Tax is 118000.
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    int residenceStatus;
+    double taxableIncome;
+    double tax = 0.0;
+
+    // Prompt user for input
+    cout << "(0-Resident, 1-Non-resident)" << endl;
+    cout << "Enter the residence status: ";
+    cin >> residenceStatus;
+    cout << "Enter the taxable income: ";
+    cin >> taxableIncome;
+
+    // Validate residence status
+    if (residenceStatus != 0 && residenceStatus != 1) {
+        cout << "Invalid residence status entered!" << endl;
+        return 1;
+    }
+
+    // Tax Calculation Logic
+    if (residenceStatus == 0) {
+        // Resident Individual Tax Brackets
+        if (taxableIncome <= 2820000) {
+            tax = 0;
+        } else if (taxableIncome <= 4020000) {
+            tax = (taxableIncome - 2820000) * 0.10;
+        } else if (taxableIncome <= 4920000) {
+            tax = (taxableIncome - 4020000) * 0.20 + 120000;
+        } else if (taxableIncome <= 120000000) {
+            tax = (taxableIncome - 4920000) * 0.30 + 300000;
+        } else {
+            // Above 120,000,000 pays standard 30% bracket rate + additional 10% surcharge
+            tax = ((taxableIncome - 4920000) * 0.30 + 300000) + ((taxableIncome - 120000000) * 0.10);
+        }
+    } else {
+        // Non-Resident Individual Tax Brackets
+        if (taxableIncome <= 4020000) {
+            tax = taxableIncome * 0.10;
+        } else if (taxableIncome <= 4920000) {
+            tax = (taxableIncome - 4020000) * 0.20 + 402000;
+        } else if (taxableIncome <= 120000000) {
+            tax = (taxableIncome - 4920000) * 0.30 + 582000;
+        } else {
+            tax = ((taxableIncome - 4920000) * 0.30 + 582000) + ((taxableIncome - 120000000) * 0.10);
+        }
+    }
+
+    // Output result
+    cout << fixed << setprecision(0); 
+    cout << "Tax is " << tax << endl;
+
+    return 0;
+}
