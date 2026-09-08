@@ -11,11 +11,12 @@
 // 0 <= x <= 10
 // 0 <= y <= mx + c
 
-import std;
+#include <iostream>
+using namespace std;
 
 int main() // read name and age
 {
-    std::cout << "Please enter a coordinate pair value: \n";
+    cout << "Please enter a coordinate pair value: \n";
 
     // Initialize coordinate values
     int x1 = 0;
@@ -35,14 +36,14 @@ int main() // read name and age
     double y_extrapolate = (gradient * x1) + y_intercept;
 
     // Read values
-    std::cin >> x1 >> y1;
+    cin >> x1 >> y1;
 
     if ((x_min <= x1 && x1 <= x_max) &&
         // (y_min <= y1 && y1 <= y_max) &&
         (y_min <= y1 && y1 <= y_extrapolate))
-        std::print("Point ({},{}) lies in triangle\n", x1, y1);
+        cout << "Point (" << x1 << "," << y1 << ") lies in triangle\n";
     else
-        std::print("It does not lie in the triangle\n");
+        cout << "It does not lie in the triangle\n";
 
     return 0;
 }
