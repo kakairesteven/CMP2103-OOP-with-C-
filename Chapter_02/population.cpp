@@ -7,6 +7,7 @@
 #include <iostream>
 
 int main() {
+    
     long population = 312032486;
     const long secondsPerYear = 365L * 24 * 60 * 60; // 31,536,000
 
