@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 int main() {
     double x1, y1, x2, y2, x3, y3;
@@ -21,7 +20,6 @@ int main() {
     double area = sqrt(s * (s - side1) * (s - side2) * (s - side3));
 
     // Display result rounded to one decimal place
-
     cout << "The area of the triangle is " << area << endl;
 
     return 0;
