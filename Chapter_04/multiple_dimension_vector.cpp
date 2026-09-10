@@ -22,10 +22,10 @@ int main()
     cin >> z;
 
     // Define a 3d vector of size x by y and initialize all elements to 0
-    // Example v = [
-    // [[0, 0, 0], [0, 0, 0]],
-    // [[0, 0, 0], [0, 0, 0]]
-    // ]
+    // Example v = {}
+    // {{0, 0, 0}, {0, 0, 0}},
+    // {{0, 0, 0}, {0, 0, 0}}
+    // }
     vector<vector<vector<int>>> v(x, vector<vector<int>>(y, vector<int>(z, 0)));
 
     // Re-assign values in a 2d vector
