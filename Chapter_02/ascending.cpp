@@ -1,4 +1,27 @@
-// Write a program that prompts the user to enter three integer values, and
-// then outputs the values in numerical sequence separated by commas.
-// So, if the user enters the values 10 4 6, the output should be 4, 6, 10.
-// If two values are the same, they should just be ordered together. So, the input 4 5 4 should give 4, 4, 5.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cout << "Enter three integers: ";
+    cin >> a >> b >> c;
+
+    int first, second, third;
+
+    if (a <= b && a <= c) {
+        first = a;
+        if (b <= c) { second = b; third = c; }
+        else { second = c; third = b; }
+    } else if (b <= a && b <= c) {
+        first = b;
+        if (a <= c) { second = a; third = c; }
+        else { second = c; third = a; }
+    } else {
+        first = c;
+        if (a <= b) { second = a; third = b; }
+        else { second = b; third = a; }
+    }
+
+    cout << first << ", " << second << ", " << third << endl;
+    return 0;
+}
