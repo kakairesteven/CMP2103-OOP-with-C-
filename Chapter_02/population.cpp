@@ -1,8 +1,25 @@
-// (Population projection) UBoS projects population based on the
-// following assumptions:
-// One birth every 7 seconds
-// One death every 13 seconds
-// One new immigrant every 45 seconds
-// Write a program to display the population for each of the next five years. Assume the current population is 312032486 and one year has 365 days.
+#include <iostream>
 
+int main() {
+    // Initial values
+    long currentPopulation = 312032486;
+    const int secondsPerYear = 365 * 24 * 60 * 60; // 31,536,000 seconds
 
+    // Calculate annual rates
+    int birthsPerYear = secondsPerYear / 7;
+    int deathsPerYear = secondsPerYear / 13;
+    int immigrantsPerYear = secondsPerYear / 45;
+
+    // Net change in population each year
+    int annualPopulationChange = birthsPerYear - deathsPerYear + immigrantsPerYear;
+
+    // Display population for each of the next 5 years
+    std::cout << "Initial Population: " << currentPopulation << "\n\n";
+
+    for (int year = 1; year <= 5; ++year) {
+        currentPopulation += annualPopulationChange;
+        std::cout << "Year " << year << " Population: " << currentPopulation << "\n";
+    }
+
+    return 0;
+}
