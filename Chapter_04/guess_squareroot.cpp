@@ -10,3 +10,38 @@
 // you can claim that nextGuess is the approximated square root of n. If not,
 // nextGuess becomes lastGuess and the approximation process continues.
 // Implement the a function that returns the square root of n usig the above technique.
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double babylonianSqrt(double n) {
+    if (n < 0) {
+        return -1;
+    }
+
+    double lastGuess = 1.0;
+    double nextGuess = (lastGuess + (n / lastGuess)) / 2.0;
+
+    while (fabs(nextGuess - lastGuess) > 0.0001) {
+        lastGuess = nextGuess;
+        nextGuess = (lastGuess + (n / lastGuess)) / 2.0;
+    }
+
+    return nextGuess;
+}
+
+int main() {
+    double n;
+
+    cout << "Enter a number: ";
+    cin >> n;
+
+    if (n < 0) {
+        cout << "Square root is not defined for negative numbers." << endl;
+    } else {
+        cout << "Approximate square root: " << babylonianSqrt(n) << endl;
+    }
+
+    return 0;
+}

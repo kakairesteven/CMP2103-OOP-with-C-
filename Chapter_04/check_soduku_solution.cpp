@@ -1,21 +1,34 @@
 #include "check_soduku_solution.h"
 #include <vector>
 
-bool isValid(const vector<vector<int>> &grid);
+bool isValidAt(int row, int col, const std::vector<std::vector<int>>& grid)
 {
-    int i = 0;
-    int j = 0;
-    int row = 0;
-    int col = 0;
-    vector<vector<int>> grid;
+    int value = grid[row][col];
+    if (value < 1 || value > 9)
+        return false;
 
-    // Check rows
-    for (int i = 0; i < 9; ++i)
+    // Check the row.
+    for (int c = 0; c < 9; ++c)
     {
-        for (int j = 0; j < 9; ++j)
+        if (c != col && grid[row][c] == value)
+            return false;
+    }
+
+    // Check the column.
+    for (int r = 0; r < 9; ++r)
+    {
+        if (r != row && grid[r][col] == value)
+            return false;
+    }
+
+    // Check the 3x3 box.
+    int startRow = (row / 3) * 3;
+    int startCol = (col / 3) * 3;
+    for (int r = startRow; r < startRow + 3; ++r)
+    {
+        for (int c = startCol; c < startCol + 3; ++c)
         {
-            int num = grid[i][j];
-            if (grid[i][j] < 1 || grid[i][j] > 9 || not isValidAt(i, j, grid))
+            if ((r != row || c != col) && grid[r][c] == value)
                 return false;
         }
     }
@@ -23,31 +36,22 @@ bool isValid(const vector<vector<int>> &grid);
     return true;
 }
 
-// Check whether a number is valid at a specific position in the grid
-bool isValidAt(int i, int j, const vector<vector<int>> &grid)
+bool isValid(const std::vector<std::vector<int>>& grid)
 {
+    if (grid.size() != 9)
+        return false;
 
-    vector<vector<int>> grid;
-    // Check whether grid[i][j] is valid in the i's row
-    for (int j = 0; j < 9; ++j)
+    for (const auto& row : grid)
     {
-        if (j != col && grid[row][j] == grid[row][col])
+        if (row.size() != 9)
             return false;
     }
 
-    // Check whether grid[i][j] is valid in the j's column
-    for (int i = 0; i < 9; ++i)
+    for (int r = 0; r < 9; ++r)
     {
-        if (i != row && grid[i][col] == grid[row][col])
-            return false;
-    }
-
-    // Check whether grid[i][j] is valid in the 3x3 box
-    for (int row = ((i / 3) * 3); row < ((i / 3) * 3 + 3); ++row)
-    {
-        for (int col = (j / 3) * 3; col < (j / 3) * 3 + 3; ++col)
+        for (int c = 0; c < 9; ++c)
         {
-            if (i != row && j != col && grid[i][j] == grid[row][col])
+            if (!isValidAt(r, c, grid))
                 return false;
         }
     }

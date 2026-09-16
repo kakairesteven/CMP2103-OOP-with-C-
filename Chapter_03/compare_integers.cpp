@@ -1,23 +1,25 @@
 // Given two inter values, the programs finds out if a number is less, equal or greater than the second number
-import std;
+
+#include <iostream>
+using namespace std;
 
 int main()
 {
     int a = 0;
     int b = 0;
-    std::cout << "Please enter two integers\n";
-    std::cin >> a >> b;
+    cout << "Please enter two integers\n";
+    cin >> a >> b;
     if (a < b) // condition
         // 1st alternative (if condition is true)
-        std::print("{} is less than {}\n", a, b);
+        cout << a << " is less than " << b << endl;
 
     else if (a > b)
         // 2nd alternative (if condition is false)
-        std::print("{} is greater than to {}\n", a, b);
+        cout << a << " is greater than " << b << endl;
     else if (a == b)
-        std::print("{} is equal to {}\n", a, b);
+        cout << a << " is equal to " << b << endl;
     else
-        std::print("Invalid input\n");
+        cout << "Invalid input" << endl;
 }
 
 // Try

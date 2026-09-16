@@ -13,3 +13,37 @@
 // Enter height in inches: 70
 // BMI is 20.95
 // Normal
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    const double POUND_TO_KG = 0.45359237;
+    const double INCH_TO_M = 0.0254;
+
+    double weightInPounds;
+    double heightInInches;
+
+    cout << "Enter weight in pounds: ";
+    cin >> weightInPounds;
+
+    cout << "Enter height in inches: ";
+    cin >> heightInInches;
+
+    double weightInKg = weightInPounds * POUND_TO_KG;
+    double heightInMeters = heightInInches * INCH_TO_M;
+    double bmi = weightInKg / (heightInMeters * heightInMeters);
+
+    cout << "BMI is " << bmi << endl;
+
+    if (bmi < 18.5)
+        cout << "Underweight" << endl;
+    else if (bmi < 25.0)
+        cout << "Normal" << endl;
+    else if (bmi < 30.0)
+        cout << "Overweight" << endl;
+    else
+        cout << "Obese" << endl;
+
+    return 0;
+}

@@ -1,8 +1,7 @@
 #include <random>
 #include <iostream>
-#include <print>
 #include <algorithm>
-
+#include <vector>
 
 using namespace std;
 
@@ -20,7 +19,14 @@ int main()
     cout << "Average temperature: " << sum / temps.size() << '\n';
 
     // compute median temperature:
-    ranges::sort(temps); // sort the temperatures
-    cout << "Median temperature: " << temps[temps.size() / 2] << '\n';
+    sort(temps.begin(), temps.end()); // sort the temperatures
+
+    double median = 0;
+    if (temps.size() % 2 == 0)
+        median = (temps[temps.size() / 2 - 1] + temps[temps.size() / 2]) / 2.0;
+    else
+        median = temps[temps.size() / 2];
+
+    cout << "Median temperature: " << median << '\n';
 }
 

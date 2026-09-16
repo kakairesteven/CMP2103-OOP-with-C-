@@ -1,4 +1,6 @@
-import std;
+#include <iostream>
+#include <iomanip>
+#include <cmath>
 using namespace std;
 
 int main() {
@@ -10,7 +12,7 @@ int main() {
         // sign = -sign;
     }
 
-    print("Estimated value of pi: {}\n", 4*pi_estimation);
+    cout << "Estimated value of pi: " << 4 * pi_estimation << endl;
 }
 
 

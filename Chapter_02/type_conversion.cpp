@@ -20,8 +20,8 @@
 // 35 = #
 // 36 = $
 // 37 = %
-
-import std;
+#include <iostream>
+using namespace std;
 
 int main()
 {

@@ -1,4 +1,4 @@
-import std;
+#include <iostream>
 using namespace std;
 
 // class Bad_area{
