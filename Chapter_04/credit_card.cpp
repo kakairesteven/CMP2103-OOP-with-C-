@@ -157,3 +157,63 @@ int main()
 
 // Valid examples
 // 4242424242424242
+
+
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    string card;
+    cout << "Enter card number: ";
+    cin >> card;
+
+    // 1. Calculate length (Size)
+    int size = card.length();
+
+    // 2. Extract Prefix (first 3 digits safely)
+    string prefix_str = card.substr(0, min(3, size));
+    int prefix = (size > 0) ? stoi(prefix_str) : 0;
+
+    // 3. Check if Prefix is Matched (4, 5, 6, or 37)
+    bool matched = false;
+    if (size >= 1) {
+        int first_one = card[0] - '0';
+        int first_two = (size >= 2) ? stoi(card.substr(0, 2)) : 0;
+        matched = (first_one == 4 || first_one == 5 || first_one == 6 || first_two == 37);
+    }
+
+    // 4. Calculate Luhn sums (Double Even Places & Odd Places)
+    int sum_even = 0;
+    int sum_odd = 0;
+    bool is_even_position = false; // Starts at false because rightmost digit is odd position
+
+    // Loop backwards from the last digit to the first
+    for (int i = size - 1; i >= 0; i--) {
+        int digit = card[i] - '0';
+
+        if (is_even_position) {
+            int doubled = digit * 2;
+            sum_even += (doubled > 9) ? (doubled - 9) : doubled; // Quick digit sum trick
+        } else {
+            sum_odd += digit;
+        }
+        is_even_position = !is_even_position; // Alternate positions
+    }
+
+    // 5. Determine absolute validity
+    bool valid = (size >= 13 && size <= 16) && matched && ((sum_even + sum_odd) % 10 == 0);
+
+    // Print same required outputs
+    cout << "\nPrefix: " << prefix << "\n";
+    cout << "Matched: " << matched << "\n";
+    cout << "Size: " << size << "\n";
+    cout << "Sum of Odd Numbers: " << sum_odd << "\n";
+    cout << "Sum of double even numbers: " << sum_even << "\n";
+    cout << "Valid: " << valid << "\n";
+
+    return 0;
+}
