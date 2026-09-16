@@ -5,6 +5,8 @@
             "label": "C/C++: clang++ build active file",
             "command": "/opt/homebrew/opt/llvm/bin/clang++",
             "args": [
+                "-std=c++23",
+                "-fmodules-ts",
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",

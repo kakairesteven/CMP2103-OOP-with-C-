@@ -1,6 +1,13 @@
 // A program that prompts for a first name and return a greeting.
+<<<<<<< HEAD
 import std;
 // using namespace std;
+=======
+//#include "PPPheaders.h"
+//import std;
+//using namespace std;
+#include <iostream>
+>>>>>>> 339890e (Mail_Merge_Assignment)
 
 int main()
 {

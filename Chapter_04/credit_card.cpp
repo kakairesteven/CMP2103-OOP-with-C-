@@ -1,4 +1,7 @@
-import std;
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 // Read number into a vector
