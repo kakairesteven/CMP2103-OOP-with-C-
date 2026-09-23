@@ -3,15 +3,16 @@
 //      perimeter = 2 * radius * pi
 
 // Where pi = 3.14.
-
-import std;
+#include <iostream>
+#include <iomanip>
+using  namespace std;
 
 int main()
 {
     //  Print statement
     std::cout << "Please enter the radius of a circle\n";
 
-    // Initialize radius
+
     int radius = 0;
 
     // read radius
@@ -27,7 +28,7 @@ int main()
     double perimeter = 2 * radius * pi;
 
     // Print
-    std::cout << "A circle of radius, " << radius << "has: \n";
+    std::cout << "A circle of radius, " << radius << " has: \n";
     std::cout << "Area, " << area << "\n";
     std::cout << "Perimeter, " << perimeter << "\n";
 
