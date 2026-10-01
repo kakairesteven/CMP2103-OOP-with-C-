@@ -1,4 +1,7 @@
-import std;
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 import validate_credit_card;
