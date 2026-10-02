@@ -8,3 +8,5 @@
 // Calculate the mean, sum and median for each row.
 // Display the final output in a table.
 
+#include <iostream>
+using namespace std;

@@ -10,7 +10,7 @@ int main()
     int number_of_rows = 0;
     int number_of_columns = 0;
 
-    // Read in the number of rows and columns
+    // Read in the number of ropws and columns
     cout << "Enter number of rows: " << "\n";
     cin >> number_of_rows;
 
