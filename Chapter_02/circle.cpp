@@ -4,7 +4,9 @@
 
 // Where pi = 3.14.
 
-import std;
+//import std;
+
+#include <iostream>
 
 int main()
 {
