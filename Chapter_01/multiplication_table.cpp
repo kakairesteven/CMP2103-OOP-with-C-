@@ -5,7 +5,8 @@
 // 3  	 	9 		27
 // 4 		16 		64
 
-import std;
+#include <iostream>
+using namespace std;
 
 int main() {
     // Print the header and each specific row directly
@@ -18,6 +19,7 @@ int main() {
 
 // Try
 // Modify this program to use loops and string formating
+
 
 
 // Compile std to be found by g++
