@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+class rectangle {
+private:
+    double width;
+    double length;
+
+public:
+    void setwidth(double w) {
+        width = w;
+    }
+
+    void setlength(double l) {
+        length = l;
+    }
+
+    double getperimeter() {
+        return 2 * (length + width);
+    }
+
+    double getarea() {
+        return length * width;
+    }
+};
+
+int main() {
+    rectangle myRectangle;
+
+    myRectangle.setwidth(5.0);
+    myRectangle.setlength(10.0);
+
+    cout << "Rectangle Perimeter: " << myRectangle.getperimeter() << endl;
+    cout << "Rectangle Area: " << myRectangle.getarea() << endl;
+
+    return 0;
+}
