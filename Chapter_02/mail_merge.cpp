@@ -1,30 +1,68 @@
-// Write a program that outputs an acceptance letter for Makerere University. It should prompt a user to enter their first name, last name, study program, academic year.
-// The program should have autodates
+#include <iostream>
+#include <string>
+#include <ctime>
 
-// Example:
+using namespace std;
 
-// Date: 27th August 2026
+int main()
+{
+    string firstName;
+    string lastName;
+    string program;
+    int academicYear;
 
-// To: John Okello,
+    time_t now = time(0);
+    tm *currentDate = localtime(&now);
 
-// Dear John,
+    int day = currentDate->tm_mday;
+    int month = currentDate->tm_mon + 1;
+    int year = currentDate->tm_year + 1900;
 
-// CONGRATULATIONS! I am pleased to inform you that the Makerere University 
-// Admissions Board has approved your application for admission to the 
-// 2027/2028 academic year.
+    string months[] = {"January", "February", "March", "April", "May", "June",
+                       "July", "August", "September", "October", "November", "December"};
 
-// You have been offered a place for the following course:
-// PROGRAM: Bachelor of Science in Computer and Communication Engineering
+    cout << "Enter First Name: ";
+    cin >> firstName;
 
-// As a student of Makerere University, you will be part of a historic 
-// institution dedicated to academic excellence and innovation. Please ensure 
-// that you report to the Academic Registrar's office with your original 
-// academic documents for verification during the orientation week.
+    cout << "Enter Last Name: ";
+    cin >> lastName;
 
-// We look forward to welcoming you to the Makerere University.
+    cin.ignore();
 
-// Yours sincerely,
+    cout << "Enter Study Program: ";
+    getline(cin, program);
 
+    cout << "Enter Academic Year: ";
+    cin >> academicYear;
 
-// John Doe
-// Registra
+    cout << "\nDate: " << day << " " << months[month - 1] << " " << year << endl;
+
+    cout << "\nTo: " << firstName << " " << lastName << "," << endl;
+
+    cout << "\nDear " << firstName << "," << endl;
+
+    cout << "\nCONGRATULATIONS! I am pleased to inform you that the "
+         << "Makerere University Admissions Board has approved your "
+         << "application for admission to the "
+         << academicYear << "/" << academicYear + 1
+         << " academic year." << endl;
+
+    cout << "\nYou have been offered a place for the following course:" << endl;
+
+    cout << "PROGRAM: " << program << endl;
+
+    cout << "\nAs a student of Makerere University, you will be part of a historic "
+         << "institution dedicated to academic excellence and innovation. "
+         << "Please ensure that you report to the Academic Registrar's office "
+         << "with your original academic documents for verification during the "
+         << "orientation week." << endl;
+
+    cout << "\nWe look forward to welcoming you to Makerere University." << endl;
+
+    cout << "\nYours sincerely," << endl;
+
+    cout << "\nJohn Doe" << endl;
+    cout << "Registrar" << endl;
+
+    return 0;
+}

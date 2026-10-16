@@ -1,17 +1,97 @@
-## Buffer Analysis
+#include <iostream>
+#include <cmath>
+#include <vector>
+using namespace std;
 
-A buffer region is an area created around a geographic feature at a specified distance.
+// Structure to represent a point
+struct Point {
+    double x;
+    double y;
+};
 
-For example, a 1 km buffer around a water point represents all locations that are within 1 km of that water source.
+// Function to calculate distance between two points
+double calculateDistance(Point center, Point point) {
+    return sqrt(
+        pow(point.x - center.x, 2) +
+        pow(point.y - center.y, 2)
+    );
+}
 
-Buffers can be created around points, lines, or polygons and are commonly used in GIS for proximity and spatial analysis.
+int main() {
 
-### Task
+    // 1. Enter the center point
+    Point center;
 
-Write a program that:
+    cout << "Enter center X coordinate: ";
+    cin >> center.x;
 
-- Takes a specific point coordinate as the center location.
-- Creates buffers of different sizes around that point.
-- Takes a given set of points.
-- Determines which points fall within each buffer.
-- Returns the points contained in each buffer region
+    cout << "Enter center Y coordinate: ";
+    cin >> center.y;
+
+
+    // 2. Enter buffer sizes
+    int numberOfBuffers;
+
+    cout << "\nEnter number of buffers: ";
+    cin >> numberOfBuffers;
+
+    vector<double> buffers(numberOfBuffers);
+
+    for (int i = 0; i < numberOfBuffers; i++) {
+        cout << "Enter size of buffer " << i + 1 << " (km): ";
+        cin >> buffers[i];
+    }
+
+
+    // 3. Enter the points
+    int numberOfPoints;
+
+    cout << "\nEnter number of points: ";
+    cin >> numberOfPoints;
+
+    vector<Point> points(numberOfPoints);
+
+    for (int i = 0; i < numberOfPoints; i++) {
+        cout << "\nEnter coordinates for Point " << i + 1 << endl;
+
+        cout << "X: ";
+        cin >> points[i].x;
+
+        cout << "Y: ";
+        cin >> points[i].y;
+    }
+
+
+    // 4. Determine which points fall within each buffer
+    cout << "\n========== BUFFER ANALYSIS ==========\n";
+
+    for (int i = 0; i < numberOfBuffers; i++) {
+
+        cout << "\nPoints within " << buffers[i] << " km buffer:\n";
+
+        bool found = false;
+
+        for (int j = 0; j < numberOfPoints; j++) {
+
+            double distance = calculateDistance(center, points[j]);
+
+            if (distance <= buffers[i]) {
+
+                cout << "Point " << j + 1
+                     << " (" << points[j].x
+                     << ", " << points[j].y << ")";
+
+                cout << " - Distance = "
+                     << distance << " km\n";
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+            cout << "No points found in this buffer.\n";
+        }
+    }
+
+    return 0;
+}
