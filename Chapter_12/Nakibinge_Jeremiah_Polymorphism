@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+
+// 1. Parent Base Class
+class Vehicle {
+protected:
+    std::string brand;
+
+public:
+    Vehicle(std::string b) {
+        brand = b;
+    }
+
+    virtual void fuel_type() {
+        std::string message = "Vehicle " + brand + " uses a generic fuel type.";
+        std::cout << message << std::endl;
+    }
+};
+
+class PetrolCar : public Vehicle {
+public:
+    PetrolCar(std::string b) : Vehicle(b) {}
+
+    void fuel_type() override {
+        std::string message = brand + " runs entirely on Premium Petrol fuel.";
+        std::cout << message << std::endl;
+    }
+};
+
+class ElectricCar : public Vehicle {
+public:
+    ElectricCar(std::string b) : Vehicle(b) {}
+
+    // Overriding the virtual function 
+    void fuel_type() override {
+        std::string message = brand + " runs 100% on Electric Battery power.";
+        std::cout << message << std::endl;
+    }
+};
+
+int main() {
+
+    PetrolCar my_petrol("Toyota");
+    ElectricCar my_electric("Tesla");
+
+    Vehicle* vehicle_ptr1 = &my_petrol;
+    Vehicle* vehicle_ptr2 = &my_electric;
+
+    std::cout << "--- Demonstrating Runtime Polymorphism ---" << std::endl;
+    
+   vehicle_ptr1->fuel_type(); 
+    vehicle_ptr2->fuel_type();
+
+    return 0;
+}
