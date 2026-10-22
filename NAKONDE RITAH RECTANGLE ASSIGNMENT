@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+class Rectangle{
+    private: 
+        double length;
+        double width;
+
+    public:
+        Rectangle(double length, double width):length(length), width(width) {}
+        void setLength(double setlength){
+                length = setlength;
+            }
+
+            void setWidth(double setwidth){
+                width = setwidth;
+            }
+
+            double getLength(){
+                return length;
+            }
+
+            double getWidth(){
+                return width;
+            }   
+
+            double calc_area(){
+                return length * width;
+            }
+
+            double calc_perimeter(){
+                return 2 * (length + width);
+            }
+
+};
+
+int main(){
+    Rectangle rectangle1(4.0 , 5.0);
+
+    Rectangle rectangle2(6.0 , 7.0);
+
+    rectangle1.setLength(8.0);  
+
+    cout << "Rectangle 1: Length = " << rectangle1.getLength() << ", Width = " << rectangle1.getWidth() << endl;
+    cout << "Rectangle 1: Area = " << rectangle1.calc_area() << ", Perimeter = " << rectangle1.calc_perimeter() << endl;
+
+    cout << "Rectangle 2: Length = " << rectangle2.getLength() << ", Width = " << rectangle2.getWidth() << endl;
+    cout << "Rectangle 2: Area = " << rectangle2.calc_area() << ", Perimeter = " << rectangle2.calc_perimeter() << endl;
+return 0;
+}
